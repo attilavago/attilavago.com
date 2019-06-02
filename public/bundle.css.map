@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../src/App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\tlet name = 'world';\n</script>\n\n<style>\n\tbody {\n\t\tpadding: 0 !important;\n\t\tborder: 0;\n\t}\n\tmain {\n\t\tposition: relative;\n\t\tdisplay: grid;\n\t\tjustify-items: center;\n\t}\n\th1 {\n\t\tposition: absolute;\n\t\tdisplay: grid;\n\t\talign-self: center;\n\t\ttext-align: center;\n\t\tbackground: rgba(127, 255, 212, 1);\n    \tpadding: 20px;\n    \tborder: solid 20px white;\n\t}\n\t.background {\n\t\twidth: 0;\n\t\theight: 0;\n\t\tborder-style: solid;\n\t\tborder-width: 100vh 100vw 0 0;\n\t\tborder-color: black transparent transparent transparent;\n\t}\n</style>\n\n<main>\n<div class=\"background\"></div>\n<h1>life isn't binary, it's hexadecimal</h1>\n</main>"
+  ],
+  "names": [],
+  "mappings": "AASC,IAAI,eAAC,CAAC,AACL,QAAQ,CAAE,QAAQ,CAClB,OAAO,CAAE,IAAI,CACb,aAAa,CAAE,MAAM,AACtB,CAAC,AACD,EAAE,eAAC,CAAC,AACH,QAAQ,CAAE,QAAQ,CAClB,OAAO,CAAE,IAAI,CACb,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,KAAK,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,CAC/B,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,KAAK,CAAC,IAAI,CAAC,KAAK,AAC5B,CAAC,AACD,WAAW,eAAC,CAAC,AACZ,KAAK,CAAE,CAAC,CACR,MAAM,CAAE,CAAC,CACT,YAAY,CAAE,KAAK,CACnB,YAAY,CAAE,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAC7B,YAAY,CAAE,KAAK,CAAC,WAAW,CAAC,WAAW,CAAC,WAAW,AACxD,CAAC"
+}
