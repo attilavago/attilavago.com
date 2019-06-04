@@ -43,6 +43,10 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -232,21 +236,26 @@ var app = (function () {
     const file = "src/App.svelte";
 
     function create_fragment(ctx) {
-    	var main, div, t, h1;
+    	var main, div0, div0_class_value, t0, div1, div1_class_value, t1, h1, dispose;
 
     	return {
     		c: function create() {
     			main = element("main");
-    			div = element("div");
-    			t = space();
+    			div0 = element("div");
+    			t0 = space();
+    			div1 = element("div");
+    			t1 = space();
     			h1 = element("h1");
     			h1.textContent = "life isn't binary, it's hexadecimal";
-    			div.className = "background svelte-1t5lvrr";
-    			add_location(div, file, 33, 0, 529);
-    			h1.className = "svelte-1t5lvrr";
-    			add_location(h1, file, 34, 0, 560);
-    			main.className = "svelte-1t5lvrr";
-    			add_location(main, file, 32, 0, 522);
+    			div0.className = div0_class_value = "" + ("background " + ctx.afterClickClass) + " svelte-1p9j3d8";
+    			add_location(div0, file, 56, 0, 1175);
+    			div1.className = div1_class_value = "" + ("backgroundLayer " + ctx.afterClickLayerClass) + " svelte-1p9j3d8";
+    			add_location(div1, file, 57, 0, 1227);
+    			h1.className = "svelte-1p9j3d8";
+    			add_location(h1, file, 58, 0, 1289);
+    			main.className = "svelte-1p9j3d8";
+    			add_location(main, file, 55, 0, 1168);
+    			dispose = listen(h1, "click", ctx.afterClick);
     		},
 
     		l: function claim(nodes) {
@@ -255,12 +264,23 @@ var app = (function () {
 
     		m: function mount(target, anchor) {
     			insert(target, main, anchor);
-    			append(main, div);
-    			append(main, t);
+    			append(main, div0);
+    			append(main, t0);
+    			append(main, div1);
+    			append(main, t1);
     			append(main, h1);
     		},
 
-    		p: noop,
+    		p: function update(changed, ctx) {
+    			if ((changed.afterClickClass) && div0_class_value !== (div0_class_value = "" + ("background " + ctx.afterClickClass) + " svelte-1p9j3d8")) {
+    				div0.className = div0_class_value;
+    			}
+
+    			if ((changed.afterClickLayerClass) && div1_class_value !== (div1_class_value = "" + ("backgroundLayer " + ctx.afterClickLayerClass) + " svelte-1p9j3d8")) {
+    				div1.className = div1_class_value;
+    			}
+    		},
+
     		i: noop,
     		o: noop,
 
@@ -268,14 +288,31 @@ var app = (function () {
     			if (detaching) {
     				detach(main);
     			}
+
+    			dispose();
     		}
+    	};
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let afterClickClass = '';
+    	let afterClickLayerClass = '';
+    	const afterClick = () => {
+    		$$invalidate('afterClickClass', afterClickClass = 'afterClickBackground');
+    		$$invalidate('afterClickLayerClass', afterClickLayerClass = 'afterClickBackgroundLayer');
+    	};
+
+    	return {
+    		afterClickClass,
+    		afterClickLayerClass,
+    		afterClick
     	};
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment, safe_not_equal, []);
+    		init(this, options, instance, create_fragment, safe_not_equal, []);
     	}
     }
 
